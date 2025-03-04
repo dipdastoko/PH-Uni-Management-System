@@ -1,3 +1,4 @@
+import { ObjectId } from 'mongoose';
 import TAcademicSemester from './academicSemester.interface';
 import { academicSemesterNameCodeMapper } from './academicSemesterConstants';
 import { AcademicSemester } from './academinSemester.model';
@@ -17,7 +18,13 @@ const getAllAcademicSemestersFromDB = async () => {
   return result;
 };
 
+const getSemesterByIdFromDB = async (id: string) => {
+  const result = await AcademicSemester.findById({ _id: id });
+  return result;
+};
+
 export const AcademicSemesterServices = {
   createAcademicSemesterIntoDB,
   getAllAcademicSemestersFromDB,
+  getSemesterByIdFromDB,
 };
